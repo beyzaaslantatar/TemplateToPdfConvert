@@ -1,0 +1,43 @@
+﻿@model List<Student>
+
+<a asp-controller="Home" asp-action="Add" class="btn btn-primary">EKLE</a>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<button id="btnPdf" class="btn btn-primary">Convert to pdf</button>
+
+<div id="pdfContainer" style="text-align:center;">
+    <table id="tblOgrenci" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Age</th>
+                <th>Phone</th>
+                <th>E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (Student item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.Age</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Email</td>
+                    <td><a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-danger">Sil</a> | <a asp-action="Update" asp-route-id="@item.Id" asp-controller="Home" class="btn btn-success">Düzenle</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $("#btnPdf").click(function () {
+        var sHtml = $("#pdfContainer").html();
+        sHtml = sHtml.replace(/</g, "StrTag").replace(/>/g, "EndTag");
+        window.open('../Home/GeneratePdf?html=' + sHtml, '_blank');
+    });
+</script>

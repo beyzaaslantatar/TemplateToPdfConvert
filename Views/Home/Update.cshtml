@@ -1,0 +1,10 @@
+﻿@model Student
+
+<form method="post">
+    <input asp-for="Name" class="form-control" placeholder="Lütfen yazarın adını giriniz" value="@Model.Name" /><br />
+    <input asp-for="Surname" class="form-control" placeholder="Lütfen yazarın özgeçmişini giriniz" value="@Model.Surname" /><br />
+    <input asp-for="Age" class="form-control" placeholder="Lütfen yazarın adını giriniz" value="@Model.Age" /><br />
+    <input asp-for="Phone" class="form-control" placeholder="Lütfen yazarın özgeçmişini giriniz" value="@Model.Phone" /><br />
+    <input asp-for="Email" class="form-control" placeholder="Lütfen yazarın özgeçmişini giriniz" value="@Model.Email" /><br />
+    <button class="btn btn-success" type="submit">Güncelle</button>
+</form>
